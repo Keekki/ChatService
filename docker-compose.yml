@@ -1,0 +1,21 @@
+version: "3.8"
+services:
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+
+  backend:
+    build: ./backend/spring-boot
+    ports:
+      - "8081:8080"
+
+  rabbitmq:
+    image: "rabbitmq:latest"
+    environment:
+      - "RABBITMQ_DEFAULT_PASS=secret"
+      - "RABBITMQ_DEFAULT_USER=myuser"
+    ports:
+      - "5672:5672"
