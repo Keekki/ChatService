@@ -12,9 +12,4 @@ public class PageController {
         return "Hello Home!";
     }
 
-    @GetMapping("/greet")
-    public String greet(@AuthenticationPrincipal OAuth2User principal) {
-        String username = principal != null ? principal.getAttribute("name") : "Guest";
-        return "Hello, " + username + "!";
-    }
 }

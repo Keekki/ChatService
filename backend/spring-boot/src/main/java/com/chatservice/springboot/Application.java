@@ -16,11 +16,6 @@ import java.util.Map;
    @RestController
    public class Application {
 
-    @GetMapping("/user")
-    public Map<String, Object> user(@AuthenticationPrincipal OAuth2User principal) {
-        return Collections.singletonMap("name", principal.getAttribute("name"));
-    }
-
        public static void main(String[] args) {
            SpringApplication.run(Application.class, args);
        }
