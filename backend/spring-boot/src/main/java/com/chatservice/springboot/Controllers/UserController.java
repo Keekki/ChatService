@@ -2,24 +2,22 @@ package com.chatservice.springboot.Controllers;
 
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.core.user.OAuth2User;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Collections;
+import java.util.Map;
 
-@Controller
+@RestController
 public class UserController {
-
-    // OAuth2 login endpoint
-    @GetMapping("/login")
-    public String login() {
-        return "redirect:/oauth2/authorization/google"; // Redirect to the OAuth2 login flow
+    @GetMapping("/greet")
+    public String greet(@AuthenticationPrincipal OAuth2User principal) {
+        String username = principal != null ? principal.getAttribute("name") : "Guest";
+        return "Hello, " + username + "!";
     }
 
-    // OAuth2 callback endpoint
-    @GetMapping("/login/oauth2/callback")
-    public String oauth2Callback(@AuthenticationPrincipal OAuth2User principal) {
-        String username = principal.getAttribute("name");
-        return "Login successful for user: " + username;
+    @GetMapping("/user")
+    public Map<String, Object> user(@AuthenticationPrincipal OAuth2User principal) {
+        return Collections.singletonMap("name", principal.getAttribute("name"));
     }
 }
-
