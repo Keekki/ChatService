@@ -18,6 +18,7 @@ public class SecurityConfig {
         http
                 .authorizeHttpRequests( auth ->
                         auth
+                                // Add requestMatchers for posts, comments etc. if needed.
                                 .requestMatchers("/admintool/**").authenticated() // Require authentication for /admintool (later more)
                                 .anyRequest().permitAll() // Permit all other paths without authentication
                 )
