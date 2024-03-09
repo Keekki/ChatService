@@ -2,6 +2,7 @@ package com.chatservice.springboot.Service;
 
 import com.chatservice.springboot.Model.Post;
 import com.chatservice.springboot.Repository.PostRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
