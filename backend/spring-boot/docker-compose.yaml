@@ -1,14 +1,7 @@
 version: "3.8"
 services:
-  frontend:
-    build: ./frontend
-    ports:
-      - "3000:3000"
-    depends_on:
-      - backend
-
   backend:
-    build: ./backend/spring-boot
+    build: .
     ports:
       - "8081:8080"
     environment:
@@ -22,14 +15,6 @@ services:
       - db
       - rabbitmq
 
-  rabbitmq:
-    image: "rabbitmq:latest"
-    environment:
-      - "RABBITMQ_DEFAULT_PASS=secret"
-      - "RABBITMQ_DEFAULT_USER=myuser"
-    ports:
-      - "5672:5672"
-
   db:
     image: mysql
     environment:
@@ -37,12 +22,20 @@ services:
       MYSQL_ROOT_PASSWORD: password
     volumes:
       - mysql-data:/var/lib/mysql
-      - ./backend/spring-boot/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+
+  rabbitmq:
+    image: "rabbitmq:latest"
+    environment:
+      RABBITMQ_DEFAULT_PASS: secret
+      RABBITMQ_DEFAULT_USER: myuser
+    ports:
+      - "5672:5672"
 
   adminer:
     image: "adminer"
     ports:
-      - "8082:8080"  # Maps port 8080 inside the container to port 8082 on your host
+      - "8080:8080"  # Maps port 8080 inside the container to port 8080 on your host
 
 volumes:
   mysql-data:
