@@ -13,12 +13,12 @@ import java.util.Collections;
 import java.util.Map;
 
 
-@SpringBootApplication(exclude={DataSourceAutoConfiguration.class}) // Remove the exclude when adding a database
+@SpringBootApplication // Remove the exclude when adding a database
 @ComponentScan(basePackages = {"com.chatservice.springboot.Repository.PostRepository"})
-   @RestController
-   public class Application {
+@RestController
+public class Application {
 
-       public static void main(String[] args) {
-           SpringApplication.run(Application.class, args);
-       }
-   }
+    public static void main(String[] args) {
+        SpringApplication.run(Application.class, args);
+    }
+}
