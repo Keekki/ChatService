@@ -1,17 +1,24 @@
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import './App.css';
+import NavigationBar from './NavigationBar';
+import Post from './Post';
 
-const NavigationBar = () => {
+const Home = () => {
   return (
-    <nav className="navigation-bar">
-      <Link to="/">Etusivu</Link>
-      <Link to="/login">Kirjaudu</Link>
-    </nav>
+    <div>
+      <Post
+        title="Otsikko 1"
+        imageSrc="https://www.html.am/images/html-codes/links/boracay-white-beach-sunset-300x225.jpg"
+        description="Kuvateksti 1"
+      />
+      <Post
+        title="Otsikko 2"
+        imageSrc="https://www.html.am/images/html-codes/links/boracay-white-beach-sunset-300x225.jpg"
+        description="Kuvateksti 2"
+      />
+    </div>
   );
 };
-
-const Home = () => <h2>Etusivu</h2>;
-const Login = () => <h2>Kirjautumissivu</h2>;
 
 const App = () => {
   return (
@@ -23,7 +30,7 @@ const App = () => {
         <div className="content-container">
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/login" element={<Login />} />
+            <Route path="/login" />
           </Routes>
         </div>
       </div>
