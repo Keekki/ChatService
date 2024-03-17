@@ -4,9 +4,9 @@ spring:
     username: ${SPRING_DATASOURCE_USERNAME}
     password: ${SPRING_DATASOURCE_PASSWORD}
     driver-class-name: com.mysql.cj.jdbc.Driver
-  sql:
-    init:
-      mode: always # Ensures that Spring Boot initializes the database at startup
+  #sql:
+    #nit:
+      #mode: always # Ensures that Spring Boot initializes the database at startup
   jpa:
     hibernate:
       ddl-auto: update
@@ -19,3 +19,11 @@ spring:
     port: 5672
     username: ${SPRING_RABBITMQ_USERNAME}
     password: ${SPRING_RABBITMQ_PASSWORD}
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: ${SPRING_OAUTH_CLIENT_ID}
+            client-secret: ${SPRING_OAUTH_CLIENT_SECRET}
+            scope: profile, email
