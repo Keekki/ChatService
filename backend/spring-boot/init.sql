@@ -17,20 +17,23 @@ CREATE TABLE IF NOT EXISTS `User` (
   `idUser` INT NOT NULL AUTO_INCREMENT,
   `userName` VARCHAR(45) NOT NULL,
   `email` VARCHAR(45) NOT NULL,
-  `password` VARCHAR(45) NOT NULL,
+  `bio` TEXT NULL,
+  `dateOfBirth` DATE NULL,
+  `location` VARCHAR(55) NULL;
   PRIMARY KEY (`idUser`),
   UNIQUE INDEX `idUser_UNIQUE` (`idUser`),
   UNIQUE INDEX `userName_UNIQUE` (`userName`)
 ) ENGINE = InnoDB;
 
 -- Insert an example user
-INSERT INTO `User` (`userName`, `email`, `password`) VALUES ('exampleUser', 'example@example.com', 'examplePassword');
+INSERT INTO `User` (`userName`, `email`, `password`) VALUES ('exampleUser', 'example@example.com', 'example bio', '2000-1-1', 'Tampere');
 
 -- Posts table
 DROP TABLE IF EXISTS `Posts`;
 CREATE TABLE IF NOT EXISTS `Posts` (
   `postID` INT NOT NULL AUTO_INCREMENT,
   `Content` LONGTEXT NOT NULL,
+  `Category` VARCHAR(25),
   `postDate` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `idUser` INT NOT NULL,
   PRIMARY KEY (`postID`),
