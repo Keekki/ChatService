@@ -4,7 +4,7 @@ const NavigationBar = () => {
   return (
     <nav className="navigation-bar">
       <Link to="/">Etusivu</Link>
-      <Link to="/login">Kirjaudu</Link>
+      <a href="http://localhost:8081/login">Kirjaudu</a>
     </nav>
   );
 };
