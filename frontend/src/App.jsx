@@ -1,30 +1,21 @@
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ProfilePage from "./pages/ProfilePage.jsx";
+import Header from "./components/Header.jsx";
 import "./App.css";
 
-const NavigationBar = () => {
-  return (
-    <nav className="navigation-bar">
-      <Link to="/">Etusivu</Link>
-      <Link to="/login">Kirjaudu</Link>
-    </nav>
-  );
+const Home = () => {
+  <div>Home</div>;
 };
-
-const Home = () => <h2>Etusivu</h2>;
-const Login = () => <h2>Kirjautumissivu</h2>;
 
 const App = () => {
   return (
     <Router>
       <div className="App">
-        <div className="navigation-container">
-          <NavigationBar />
-        </div>
+        <Header />
+
         <div className="content-container">
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/login" element={<Login />} />
             <Route path="/user" element={<ProfilePage />} />
           </Routes>
         </div>
