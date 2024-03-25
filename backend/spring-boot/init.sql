@@ -26,7 +26,7 @@ CREATE TABLE IF NOT EXISTS `User` (
 ) ENGINE = InnoDB;
 
 -- Insert an example user
-INSERT INTO `User` (`userName`, `email`, `password`) VALUES ('exampleUser', 'example@example.com', 'example bio', '2000-1-1', 'Tampere');
+-- INSERT INTO `User` (`userName`, `email`) VALUES ('exampleUser', 'example@example.com', 'example bio', '2000-1-1', 'Tampere');
 
 -- Posts table
 DROP TABLE IF EXISTS `Posts`;
