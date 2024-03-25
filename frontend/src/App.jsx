@@ -1,5 +1,6 @@
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import ProfilePage from "./pages/ProfilePage.jsx";
+import "./App.css";
 
 const NavigationBar = () => {
   return (
@@ -24,6 +25,7 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/user" element={<ProfilePage />} />
           </Routes>
         </div>
       </div>
