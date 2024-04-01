@@ -26,9 +26,6 @@ CREATE TABLE IF NOT EXISTS `User` (
   UNIQUE INDEX `userName_UNIQUE` (`userName`)
 ) ENGINE = InnoDB;
 
-UPDATE `User`
-SET `admin` = TRUE
-WHERE `email` = 'frimodigmatias@gmail.com';
 
 -- Insert an example user
 -- INSERT INTO `User` (`userName`, `email`) VALUES ('exampleUser', 'example@example.com', 'example bio', '2000-1-1', 'Tampere');
