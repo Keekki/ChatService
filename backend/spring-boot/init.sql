@@ -19,7 +19,7 @@ CREATE TABLE IF NOT EXISTS `User` (
   `email` VARCHAR(45) NOT NULL,
   `bio` TEXT NULL,
   `dateOfBirth` DATE NULL,
-  `location` VARCHAR(55) NULL;
+  `location` VARCHAR(55) NULL,
   `admin` BOOLEAN NOT NULL DEFAULT FALSE,
   PRIMARY KEY (`idUser`),
   UNIQUE INDEX `idUser_UNIQUE` (`idUser`),
