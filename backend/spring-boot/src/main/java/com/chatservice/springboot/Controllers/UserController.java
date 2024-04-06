@@ -17,6 +17,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.Collections;
 import java.util.Map;
 import java.util.Date;
+import java.util.List;
+
 
 
 @RestController
@@ -31,10 +33,18 @@ public class UserController {
         return "Hello, " + username + "!";
     }
 
+    // Returns the current logged in user
     @GetMapping("/user")
     public Map<String, Object> user(@AuthenticationPrincipal OAuth2User principal) {
         return Collections.singletonMap("name", principal.getAttribute("name"));
     }
+
+    // Endpoint that returns all the users in the database
+    @GetMapping("/users")
+    public List<User> getAllUsers() {
+        return userRepository.findAll();
+    }
+
 
     @PostMapping("/user/updateProfile")
     public ResponseEntity<?> updateProfile(@AuthenticationPrincipal OAuth2User principal,

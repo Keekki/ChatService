@@ -17,6 +17,10 @@ public class User {
     @Column(nullable = false, unique = true)
     private String email;
 
+    @Column(name = "admin", nullable = false)
+    private Boolean admin;
+
+
     private String bio;
     private Date dateOfBirth;
     private String location;
@@ -39,4 +43,7 @@ public class User {
 
     public String getLocation() { return location; }
     public void setLocation(String location) { this.location = location; }
+
+    public Boolean isAdmin() { return admin; }
+    public void setAdmin(Boolean admin) { this.admin = admin; }
 }

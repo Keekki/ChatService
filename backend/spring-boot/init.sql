@@ -19,11 +19,13 @@ CREATE TABLE IF NOT EXISTS `User` (
   `email` VARCHAR(45) NOT NULL,
   `bio` TEXT NULL,
   `dateOfBirth` DATE NULL,
-  `location` VARCHAR(55) NULL;
+  `location` VARCHAR(55) NULL,
+  `admin` BOOLEAN NOT NULL DEFAULT FALSE,
   PRIMARY KEY (`idUser`),
   UNIQUE INDEX `idUser_UNIQUE` (`idUser`),
   UNIQUE INDEX `userName_UNIQUE` (`userName`)
 ) ENGINE = InnoDB;
+
 
 -- Insert an example user
 -- INSERT INTO `User` (`userName`, `email`) VALUES ('exampleUser', 'example@example.com', 'example bio', '2000-1-1', 'Tampere');
