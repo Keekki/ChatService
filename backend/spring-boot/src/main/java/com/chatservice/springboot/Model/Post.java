@@ -10,6 +10,9 @@ public class Post {
     private Long id;
     private String content;
     private String authorId;
+    @Column(nullable = false)
+    private Integer likeCount = 0; // Initialize with 0 likes
+    @Column(name = "Category")
     private String category;
     @ElementCollection
     private List<String> mediaAttachments;
@@ -38,6 +41,10 @@ public class Post {
     public void setAuthorId(String authorId) {
         this.authorId = authorId;
     }
+
+    public Integer getLikeCount() { return likeCount; }
+
+    public void setLikeCount(Integer likeCount) { this.likeCount = likeCount; }
 
     public String getCategory() {
         return category;
