@@ -1,0 +1,28 @@
+.profile-page {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+}
+
+.posts {
+  width: 70%;
+  flex: 80%;
+}
+
+.profile {
+  flex: 20%;
+  margin-right: 40px;
+  padding-left: 20px;
+  border-left: 1px solid rgba(82, 82, 82, 0.5);
+}
+
+.profileName {
+  font-weight: bold;
+}
+
+.profileData {
+  margin-bottom: 30px;
+  font-size: 12px;
+  margin-right: 10px;
+  max-width: 90%;
+}

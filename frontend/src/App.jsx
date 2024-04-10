@@ -1,36 +1,22 @@
-import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
-import './App.css';
-import NavigationBar from './NavigationBar';
-import Post from './Post';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import ProfilePage from "./pages/ProfilePage.jsx";
+import Header from "./components/Header.jsx";
+import "./App.css";
 
 const Home = () => {
-  return (
-    <div>
-      <Post
-        title="Otsikko 1"
-        imageSrc="https://www.html.am/images/html-codes/links/boracay-white-beach-sunset-300x225.jpg"
-        description="Kuvateksti 1"
-      />
-      <Post
-        title="Otsikko 2"
-        imageSrc="https://www.html.am/images/html-codes/links/boracay-white-beach-sunset-300x225.jpg"
-        description="Kuvateksti 2"
-      />
-    </div>
-  );
+  <div>Home</div>;
 };
 
 const App = () => {
   return (
     <Router>
       <div className="App">
-        <div className="navigation-container">
-          <NavigationBar />
-        </div>
+        <Header />
+
         <div className="content-container">
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/login" />
+            <Route path="/user/:userid" element={<ProfilePage />} />
           </Routes>
         </div>
       </div>
