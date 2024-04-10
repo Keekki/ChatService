@@ -1,14 +1,15 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "../styling/Post.css";
 
-const Post = ({ text, image, user }) => {
+const Post = ({ text, image, userId, user }) => {
   return (
     <div className="post">
       <div className="user">
-        <p>{user}</p>
+        <Link to={`/user/${userId}`}>{user}</Link>
       </div>
       <div className="content">
-        <img src={image} alt="Post Image" />
+        {image && <img src={image} alt="Post Image" />}
         <p className="contentText">{text}</p>
       </div>
     </div>

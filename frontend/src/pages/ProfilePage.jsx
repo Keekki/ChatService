@@ -1,19 +1,21 @@
 import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import Post from "../components/Post.jsx";
 import testImage from "../assets/test.png";
 import "../styling/ProfilePage.css";
 
 const ProfilePage = () => {
-  const [name, setName] = useState("");
+  const { idUser } = useParams();
+  const [userName, setName] = useState("");
   const [bio, setBio] = useState("");
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    fetch("localhost:8081/user")
+    fetch(`localhost:8081/user/${id}`)
       .then((response) => response.json())
       .then((data) => {
-        if (data.name && data.bio) {
-          setName(data.name);
+        if (data.userName && data.bio) {
+          setName(data.userName);
           setBio(data.bio);
         }
       })
@@ -32,32 +34,33 @@ const ProfilePage = () => {
       })
       .catch((error) => {
         console.error("Error fetching posts:", error);
-        setPosts([
-          {
-            id: "dummy",
-            user: "Default Dummy",
-            text: "Dummy test text that is only here to make sure if things are working. Also helps with styling etc.",
-            image: testImage,
-          },
-        ]);
       });
   }, []);
 
   return (
     <div className="profile-page">
       <div className="posts">
-        {posts.map((post) => (
+        {posts.length === 0 ? (
           <Post
-            key={post.id}
-            user={post.user}
-            text={post.text}
-            image={post.image}
+            key="dummy"
+            user="Default Dummy"
+            text="Dummy test text that is only here to make sure if things are working. Also helps with styling etc."
+            image={testImage}
           />
-        ))}
+        ) : (
+          posts.map((post) => (
+            <Post
+              key={post.id}
+              userId={idUser}
+              text={post.text}
+              image={post.image}
+            />
+          ))
+        )}
       </div>
       <div className="profile">
         <div className="profileName">
-          <p>{name}</p>
+          <p>{userName}</p>
         </div>
         <div className="profileData">
           <p>{bio}</p>
